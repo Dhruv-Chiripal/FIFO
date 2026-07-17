@@ -7,7 +7,7 @@ A fully synthesizable, parameterized Synchronous FIFO memory buffer designed in 
 * **Core FIFO Logic (`fifo.v`):** A parameterized queue featuring an extra MSB pointer trick to reliably distinguish between complete **Full** and **Empty** states without losing memory depth. It includes built-in protection logic against overflow and underflow conditions.
 * **Clock Scaler (`clock_divider.v`):** A custom clock divider that scales down the rapid $100\text{ MHz}$ internal FPGA oscillator to a lower frequency for human-readable visual verification.
 * **Simulation Testbench (`fifo_tb.v`):** A comprehensive behavioral verification script used to validate pointer wrap-around boundaries and simultaneous read/write cycles before physical hardware deployment.
-* **Constraints Mapping (`basys3_mapping.xdc`):** The physical mapping blueprint routing the system clock to pin `W5`, the reset signal to the **Center Push Button (U18)**, and output flags to the onboard **LEDs (U16, E19, U19)**.
+* **Constraints Mapping (`basys3_mapping.xdc`):** The physical mapping blueprint routing the system clock to pin `W5`, the reset signal to the **Center Push Button (U18)**, and output flags to the onboard **LEDs**.
 
 ## Specifications
 
@@ -20,7 +20,6 @@ A fully synthesizable, parameterized Synchronous FIFO memory buffer designed in 
 * **Empty Condition:** `assign empty = (rd_ptr == wr_ptr);`
 * **Full Condition:** `assign full = (rd_ptr[ADDR] != wr_ptr[ADDR]) && (rd_ptr[ADDR-1:0] == wr_ptr[ADDR-1:0]);`
 
----
 
 ## Hardware Demonstration
 
