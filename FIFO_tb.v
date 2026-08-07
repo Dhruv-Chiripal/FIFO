@@ -12,7 +12,7 @@ module tb();
     
     integer i;
      
-    // Connect to your FIFO
+   
     fifo dut (
         .clk(clk),
         .reset(reset),
@@ -24,11 +24,11 @@ module tb();
         .empty(empty)
     );
      
-    // Clock Generator 
+    // Clock Generator (10ns cycle)
     always #5 clk = ~clk;
      
     initial begin
-   
+        
         clk = 0;
         reset = 1;
         rd_en = 0;
@@ -37,10 +37,8 @@ module tb();
         
         #10 reset = 0; // Release reset
         
-        //Write Until FIFO is FULL ---
-        $display("Writing 16 elements to make FIFO full...");
-        
-        // Loop (DEPTH = 16)
+           
+      
         for (i = 0; i < 16; i = i + 1) begin
             @(posedge clk);
             wr_en = 1;
@@ -50,11 +48,23 @@ module tb();
         @(posedge clk);
         wr_en = 0;
         din = 0;
-       
-        #5;
-      
+             
         #20;
+
+        
+       for(i=0;i<16;i=i+1)begin
+         @(posedge clk); rd_en=1;
+       end
+
+        @(posedge clk);
+        rd_en = 0;
+        
+         
+         #20;
+        
         $finish;
+        
+        
     end
      
 endmodule
