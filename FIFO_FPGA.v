@@ -77,7 +77,7 @@ module top_fifo_basys (
     clk_divider clk_div_inst(
         .clk(clk),
         .reset(reset),
-        .clk_slow(clk_slow)
+        .clk_slow(clk_slower)
     );
     fifo fifo_inst (
         .clk(clk_slow),
