@@ -8,10 +8,10 @@ set_property PACKAGE_PIN U18 [get_ports reset]
 set_property IOSTANDARD LVCMOS33 [get_ports reset]
 
 ## Control Pushbuttons
-set_property PACKAGE_PIN T18 [get_ports wr_btn]         ; # BTNU (Up Button)
-set_property IOSTANDARD LVCMOS33 [get_ports wr_btn]
-set_property PACKAGE_PIN U17 [get_ports rd_btn]         ; # BTND (Down Button)
-set_property IOSTANDARD LVCMOS33 [get_ports rd_btn]
+set_property PACKAGE_PIN T18 [get_ports wr_en]          ; # BTNU (Up Button)
+set_property IOSTANDARD LVCMOS33 [get_ports wr_en]
+set_property PACKAGE_PIN U17 [get_ports rd_en]          ; # BTND (Down Button)
+set_property IOSTANDARD LVCMOS33 [get_ports rd_en]
 
 ## Switches (sw[0] to sw[7])
 set_property PACKAGE_PIN V17 [get_ports {sw[0]}]
@@ -36,7 +36,7 @@ set_property PACKAGE_PIN V14 [get_ports {led[7]}]
 set_property IOSTANDARD LVCMOS33 [get_ports {led[*]}]
 
 ## Status Flags
-set_property PACKAGE_PIN P1  [get_ports full_led]       ; # LED 14
-set_property IOSTANDARD LVCMOS33 [get_ports full_led]
-set_property PACKAGE_PIN L1  [get_ports empty_led]      ; # LED 15
-set_property IOSTANDARD LVCMOS33 [get_ports empty_led]
+set_property PACKAGE_PIN P1  [get_ports full]           ; # LED 14
+set_property IOSTANDARD LVCMOS33 [get_ports full]
+set_property PACKAGE_PIN L1  [get_ports empty]          ; # LED 15
+set_property IOSTANDARD LVCMOS33 [get_ports empty]
