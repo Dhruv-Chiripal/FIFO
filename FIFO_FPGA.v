@@ -80,7 +80,7 @@ module top_fifo_basys (
         .clk_slow(clk_slower)
     );
     fifo fifo_inst (
-        .clk(clk_slow),
+         .clk(clk_slower),
         .reset(reset),
         .wr_en(wr_en),
         .rd_en(rd_en),
