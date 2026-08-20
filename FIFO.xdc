@@ -1,21 +1,42 @@
-##################################
-## CLOCK (100 MHz onboard)
-##################################
-# Rename clk → clk_100MHZ
-set_property PACKAGE_PIN W5 [get_ports clk_100MHZ]
-create_clock -name sys_clk -period 10.00 -waveform {0 5} [get_ports clk_100MHZ]
+## Clock signal (100 MHz Onboard)
+set_property PACKAGE_PIN W5 [get_ports clk]
+set_property IOSTANDARD LVCMOS33 [get_ports clk]
+create_clock -add -name sys_clk_pin -period 10.00 -waveform {0 5} [get_ports clk]
 
-##################################
-## RESET (BTN0 / Center Button)
-##################################
-# Using button as reset
+## Reset (Center Button - BTNC)
 set_property PACKAGE_PIN U18 [get_ports reset]
 set_property IOSTANDARD LVCMOS33 [get_ports reset]
 
-##################################
-## LEDs (only 3 needed)
-##################################
+## Control Pushbuttons
+set_property PACKAGE_PIN T18 [get_ports wr_btn]         ; # BTNU (Up Button)
+set_property IOSTANDARD LVCMOS33 [get_ports wr_btn]
+set_property PACKAGE_PIN U17 [get_ports rd_btn]         ; # BTND (Down Button)
+set_property IOSTANDARD LVCMOS33 [get_ports rd_btn]
+
+## Switches (sw[0] to sw[7])
+set_property PACKAGE_PIN V17 [get_ports {sw[0]}]
+set_property PACKAGE_PIN V16 [get_ports {sw[1]}]
+set_property PACKAGE_PIN W16 [get_ports {sw[2]}]
+set_property PACKAGE_PIN W17 [get_ports {sw[3]}]
+set_property PACKAGE_PIN W15 [get_ports {sw[4]}]
+set_property PACKAGE_PIN V15 [get_ports {sw[5]}]
+set_property PACKAGE_PIN W14 [get_ports {sw[6]}]
+set_property PACKAGE_PIN W13 [get_ports {sw[7]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {sw[*]}]
+
+## Output Data LEDs (led[0] to led[7])
 set_property PACKAGE_PIN U16 [get_ports {led[0]}]
 set_property PACKAGE_PIN E19 [get_ports {led[1]}]
 set_property PACKAGE_PIN U19 [get_ports {led[2]}]
-set_property IOSTANDARD LVCMOS33 [get_ports led[*]]
+set_property PACKAGE_PIN V19 [get_ports {led[3]}]
+set_property PACKAGE_PIN W18 [get_ports {led[4]}]
+set_property PACKAGE_PIN U15 [get_ports {led[5]}]
+set_property PACKAGE_PIN U14 [get_ports {led[6]}]
+set_property PACKAGE_PIN V14 [get_ports {led[7]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {led[*]}]
+
+## Status Flags
+set_property PACKAGE_PIN P1  [get_ports full_led]       ; # LED 14
+set_property IOSTANDARD LVCMOS33 [get_ports full_led]
+set_property PACKAGE_PIN L1  [get_ports empty_led]      ; # LED 15
+set_property IOSTANDARD LVCMOS33 [get_ports empty_led]
